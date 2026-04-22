@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Zap, ShoppingCart, User, Menu } from 'lucide-react';
+import { Zap, ShoppingCart, User, Menu, LogOut } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const location = useLocation();
-  const isAdmin = false; // TODO: hook up to auth context later
-  const isLoggedIn = false; // TODO: hook up to auth context later
+  const { isAuthenticated: isLoggedIn, isAdmin, logout } = useAuth();
 
   return (
     <nav className="navbar glass">
@@ -47,14 +47,20 @@ const Navbar = () => {
           </button>
           
           {isLoggedIn ? (
-            <Link to={isAdmin ? "/admin" : "/dashboard"} className="icon-btn user-btn">
-              <User size={22} />
-            </Link>
+            <>
+              <Link to={isAdmin ? "/admin" : "/dashboard"} className="icon-btn user-btn">
+                <User size={22} />
+              </Link>
+              <button onClick={logout} className="icon-btn logout-btn">
+                <LogOut size={22} />
+              </button>
+            </>
           ) : (
             <Link to="/auth" className="btn-primary login-btn">
               Sign In
             </Link>
           )}
+
           
           {/* Mobile Toggle Placeholder */}
           <button className="icon-btn mobile-menu-btn d-none">
