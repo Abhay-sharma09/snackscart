@@ -58,3 +58,22 @@ export const getMeApi = async () => {
         method: 'GET',
     });
 };
+
+// --- Product Endpoints ---
+
+export const getProductsApi = async (category = null) => {
+    let endpoint = '/products/';
+    if (category && category.toLowerCase() !== 'all') {
+        endpoint += `?category=${encodeURIComponent(category)}`;
+    }
+    return await apiCall(endpoint, {
+        method: 'GET',
+    });
+};
+
+export const getProductByIdApi = async (id) => {
+    return await apiCall(`/products/${id}`, {
+        method: 'GET',
+    });
+};
+

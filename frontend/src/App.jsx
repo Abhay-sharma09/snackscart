@@ -7,7 +7,9 @@ import Home from './pages/Home';
 import Auth from './pages/Auth';
 import AdminDashboard from './pages/AdminDashboard';
 import UserDashboard from './pages/UserDashboard';
+import Menu from './pages/Menu';
 import './App.css';
+
 
 function App() {
   return (
@@ -29,7 +31,8 @@ function App() {
               <UserDashboard />
             </ProtectedRoute>
           } />
-          {/* We'll add the /menu route in Step 8 */}
+          <Route path="/menu" element={<Menu />} />
+
         </Routes>
       </BrowserRouter>
     </AuthProvider>
