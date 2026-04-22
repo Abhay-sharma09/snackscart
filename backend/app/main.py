@@ -2,6 +2,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 
+from app.db.database import engine
+from app.models import user # Make sure to import models to register them
+from app.db.database import Base
+
+# Create tables
+Base.metadata.create_all(bind=engine)
+
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version="1.0.0",
