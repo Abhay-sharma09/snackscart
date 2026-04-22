@@ -6,6 +6,8 @@ from app.db.database import engine
 from app.models import user # Make sure to import models to register them
 from app.db.database import Base
 
+from app.api.auth import router as auth_router
+
 # Create tables
 Base.metadata.create_all(bind=engine)
 
@@ -22,6 +24,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(auth_router, prefix="/api/auth", tags=["auth"])
 
 @app.get("/")
 def read_root():
