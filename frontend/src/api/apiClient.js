@@ -77,3 +77,32 @@ export const getProductByIdApi = async (id) => {
     });
 };
 
+// --- Order Endpoints ---
+
+export const createOrderApi = async (items) => {
+    return await apiCall('/orders/', {
+        method: 'POST',
+        body: JSON.stringify({ items }),
+    });
+};
+
+export const getMyOrdersApi = async () => {
+    return await apiCall('/orders/me', {
+        method: 'GET',
+    });
+};
+
+export const getAllOrdersApi = async () => {
+    return await apiCall('/orders/', {
+        method: 'GET',
+    });
+};
+
+export const updateOrderStatusApi = async (orderId, status) => {
+    return await apiCall(`/orders/${orderId}/status`, {
+        method: 'PATCH',
+        body: JSON.stringify({ status }),
+    });
+};
+
+

@@ -1,8 +1,11 @@
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
+  const { addToCart } = useCart();
+  
   // Use a generic placeholder if image is missing, you can adjust this later
   const imageSrc = product.image_url || 'https://via.placeholder.com/400x300/1e1e2d/a0a0b0?text=Snack+Image';
 
@@ -28,6 +31,7 @@ const ProductCard = ({ product }) => {
             disabled={!product.in_stock}
             aria-label="Add to cart"
             title="Add to cart"
+            onClick={() => addToCart(product)}
           >
             <ShoppingCart size={20} />
           </button>
