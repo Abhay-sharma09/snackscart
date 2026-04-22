@@ -7,6 +7,7 @@ from app.models import user # Make sure to import models to register them
 from app.db.database import Base
 
 from app.api.auth import router as auth_router
+from app.api.products import router as products_router
 
 # Create tables
 Base.metadata.create_all(bind=engine)
@@ -26,6 +27,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router, prefix="/api/auth", tags=["auth"])
+app.include_router(products_router, prefix="/api/products", tags=["products"])
 
 @app.get("/")
 def read_root():
