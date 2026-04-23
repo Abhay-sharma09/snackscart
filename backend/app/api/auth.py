@@ -58,9 +58,9 @@ def login_access_token(
         "token_type": "bearer",
     }
 
-@router.post("/test-token", response_model=UserResponse)
-def test_token(current_user: User = Depends(deps.get_current_user)):
+@router.get("/me", response_model=UserResponse)
+def get_me(current_user: User = Depends(deps.get_current_user)):
     """
-    Test access token
+    Get current user profile
     """
     return current_user
