@@ -12,6 +12,12 @@ const Navbar = () => {
   const { cartCount } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to sign out?")) {
+      logout();
+    }
+  };
+
   return (
     <>
       <nav className="navbar glass">
@@ -56,7 +62,7 @@ const Navbar = () => {
                 <Link to={isAdmin ? "/admin" : "/dashboard"} className="icon-btn user-btn">
                   <User size={22} />
                 </Link>
-                <button onClick={logout} className="icon-btn logout-btn">
+                <button onClick={handleLogout} className="icon-btn logout-btn" title="Sign Out">
                   <LogOut size={22} />
                 </button>
               </>

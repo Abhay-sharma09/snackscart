@@ -23,9 +23,9 @@ const UserDashboard = () => {
 
   const getStatusIcon = (status) => {
     switch (status) {
-      case 'approved': return <CheckCircle size={18} color="#00f0ff" />;
-      case 'rejected': return <XCircle size={18} color="#ff0055" />;
-      case 'delivered': return <Package size={18} color="#7000ff" />;
+      case 'approved': return <CheckCircle size={18} color="var(--accent-cyan)" />;
+      case 'rejected': return <XCircle size={18} color="var(--accent-magenta)" />;
+      case 'delivered': return <Package size={18} color="var(--accent-primary)" />;
       default: return <Clock size={18} color="#a0a0b0" />;
     }
   };

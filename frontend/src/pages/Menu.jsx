@@ -58,7 +58,7 @@ const Menu = () => {
           </div>
         ) : error ? (
           <div className="error-state glass">
-            <AlertCircle size={32} color="#ff0055" />
+            <AlertCircle size={32} color="var(--accent-magenta)" />
             <p>{error}</p>
           </div>
         ) : products.length === 0 ? (

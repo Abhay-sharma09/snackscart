@@ -79,8 +79,8 @@ const AdminDashboard = () => {
                           fontWeight: '600',
                           textTransform: 'capitalize',
                           background: order.status === 'pending' ? 'rgba(160,160,176,0.1)' : 
-                                      order.status === 'approved' ? 'rgba(0,240,255,0.1)' : 
-                                      'rgba(255,0,85,0.1)'
+                                      order.status === 'approved' ? 'rgba(13, 110, 253, 0.1)' : 
+                                      'rgba(220, 53, 69, 0.1)'
                        }}>
                           {order.status}
                        </span>
@@ -89,7 +89,7 @@ const AdminDashboard = () => {
                        <div style={{ display: 'flex', gap: '10px' }}>
                           <button 
                             className="icon-btn" 
-                            style={{ color: '#00f0ff' }}
+                            style={{ color: 'var(--accent-cyan)' }}
                             onClick={() => handleStatusUpdate(order.id, 'approved')}
                             title="Approve Order"
                           >
@@ -97,7 +97,7 @@ const AdminDashboard = () => {
                           </button>
                           <button 
                             className="icon-btn" 
-                            style={{ color: '#ff0055' }}
+                            style={{ color: 'var(--accent-magenta)' }}
                             onClick={() => handleStatusUpdate(order.id, 'rejected')}
                             title="Reject Order"
                           >

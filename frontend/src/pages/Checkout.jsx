@@ -40,7 +40,7 @@ const Checkout = () => {
     return (
       <div className="container page-wrapper checkout-success">
         <div className="glass-card success-card">
-          <CheckCircle size={64} className="accent-cyan" />
+          <CheckCircle size={64} className="accent-primary" />
           <h1>Order Placed Successfully!</h1>
           <p>Thank you for your purchase. You are being redirected to your dashboard to track your order.</p>
           <button className="btn-primary" onClick={() => navigate('/dashboard')}>Go to Dashboard</button>
@@ -53,7 +53,7 @@ const Checkout = () => {
      return (
         <div className="container page-wrapper empty-checkout">
            <div className="glass-card">
-             <ShoppingBag size={48} className="accent-magenta" />
+             <ShoppingBag size={48} className="accent-primary" />
              <h2>Your Cart is empty</h2>
              <button className="btn-primary" onClick={() => navigate('/menu')}>Explore Menu</button>
            </div>

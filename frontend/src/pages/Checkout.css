@@ -68,7 +68,7 @@
 }
 
 .total-value {
-  color: var(--accent-cyan);
+  color: var(--text-main);
   font-size: 1.8rem;
 }
 
@@ -86,8 +86,8 @@
 
 .payment-method.active {
   padding: 12px;
-  background: rgba(0, 240, 255, 0.1);
-  border: 1px solid var(--accent-cyan);
+  background: #eef2ff;
+  border: 1px solid var(--accent-primary);
   border-radius: var(--radius-sm);
   margin-bottom: 12px;
   font-weight: 600;
@@ -110,7 +110,7 @@
   align-items: center;
   gap: 10px;
   color: var(--accent-magenta);
-  background: rgba(255, 0, 85, 0.05);
+  background: rgba(220, 53, 69, 0.05);
   padding: 12px;
   border-radius: var(--radius-sm);
   margin-bottom: 20px;
@@ -144,9 +144,8 @@
   line-height: 1.6;
 }
 
-.accent-cyan {
-  color: var(--accent-cyan);
-  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
+.accent-primary {
+  color: var(--accent-primary);
 }
 
 @media (max-width: 900px) {

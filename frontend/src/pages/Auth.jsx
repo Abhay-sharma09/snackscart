@@ -47,9 +47,31 @@ const Auth = () => {
         </div>
 
         {error && (
-          <div className="auth-error">
-            <AlertCircle size={18} />
-            <span>{error}</span>
+          <div className="auth-error" style={{flexDirection: 'column', alignItems: 'flex-start'}}>
+            <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+              <AlertCircle size={18} />
+              <span>{error}</span>
+            </div>
+            {(error.toLowerCase().includes('incorrect') || error.toLowerCase().includes('failed')) && isLogin && (
+              <button 
+                type="button" 
+                className="toggle-btn" 
+                style={{marginTop: '8px', marginLeft: '26px', padding: 0}}
+                onClick={() => { setIsLogin(false); setError(null); }}
+              >
+                Not registered yet? Sign up here.
+              </button>
+            )}
+            {error.toLowerCase().includes('already exists') && !isLogin && (
+              <button 
+                type="button" 
+                className="toggle-btn" 
+                style={{marginTop: '8px', marginLeft: '26px', padding: 0}}
+                onClick={() => { setIsLogin(true); setError(null); }}
+              >
+                Already registered? Sign in here.
+              </button>
+            )}
           </div>
         )}
 

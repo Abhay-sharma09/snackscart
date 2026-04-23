@@ -15,7 +15,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
       <div className="cart-drawer glass" onClick={(e) => e.stopPropagation()}>
         <div className="cart-header">
           <div className="title-row">
-            <ShoppingBag size={24} className="accent-magenta" />
+            <ShoppingBag size={24} className="accent-primary" />
             <h2>Your Cart</h2>
           </div>
           <button className="close-btn" onClick={onClose}>

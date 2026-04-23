@@ -2,27 +2,27 @@
 
 :root {
   /* Colors */
-  --bg-dark: #0a0a0f;
-  --bg-card: #151520;
-  --bg-input: #1e1e2d;
+  --bg-dark: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
   
-  --text-main: #f0f0f5;
-  --text-muted: #a0a0b0;
+  --text-main: #212529;
+  --text-muted: #6c757d;
   
-  --accent-cyan: #00f0ff;
-  --accent-magenta: #ff0055;
-  --accent-primary: #7000ff;
-  --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-magenta) 100%);
+  --accent-cyan: #0d6efd;
+  --accent-magenta: #dc3545;
+  --accent-primary: #ff6600;
+  --accent-gradient: var(--accent-primary);
   
   /* Borders & Shadows */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --shadow-neon: 0 0 20px rgba(112, 0, 255, 0.3);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --border-subtle: #dee2e6;
+  --shadow-neon: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
   
   /* Layout */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 24px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
 }
 
 * {
@@ -61,17 +61,13 @@ button {
 }
 
 .gradient-text {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent-primary);
+  font-weight: bold;
 }
 
-/* Glassmorphism */
+/* Standard Cards */
 .glass {
-  background: rgba(21, 21, 32, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--bg-card);
   border: 1px solid var(--border-subtle);
 }
 
@@ -80,29 +76,27 @@ button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .glass-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-neon);
-  border-color: rgba(112, 0, 255, 0.5);
+  border-color: var(--border-subtle);
 }
 
 /* Buttons */
 .btn-primary {
-  background: var(--accent-gradient);
+  background: var(--accent-primary);
   color: white;
   padding: 12px 24px;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 0, 85, 0.3);
+  transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 0, 85, 0.5);
+  background: #e65c00;
 }
 
 .page-wrapper {
