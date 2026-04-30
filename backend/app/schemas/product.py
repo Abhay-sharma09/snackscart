@@ -7,6 +7,7 @@ class ProductBase(BaseModel):
     category: str
     price: float
     in_stock: bool = True
+    stock_quantity: int = 10
     image_url: Optional[str] = None
 
 class ProductCreate(ProductBase):
@@ -18,6 +19,7 @@ class ProductUpdate(BaseModel):
     category: Optional[str] = None
     price: Optional[float] = None
     in_stock: Optional[bool] = None
+    stock_quantity: Optional[int] = None
     image_url: Optional[str] = None
 
 class ProductResponse(ProductBase):

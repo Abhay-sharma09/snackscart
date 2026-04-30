@@ -77,6 +77,13 @@ export const getProductByIdApi = async (id) => {
     });
 };
 
+export const updateProductApi = async (id, productData) => {
+    return await apiCall(`/products/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(productData),
+    });
+};
+
 // --- Order Endpoints ---
 
 export const createOrderApi = async (items) => {

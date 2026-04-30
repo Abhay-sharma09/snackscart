@@ -29,8 +29,16 @@ def create_order(
         product = db.query(Product).filter(Product.id == item.product_id).first()
         if not product:
             raise HTTPException(status_code=404, detail=f"Product with id {item.product_id} not found")
-        if not product.in_stock:
-            raise HTTPException(status_code=400, detail=f"Product with id {item.product_id} is out of stock")
+        if not product.in_stock or product.stock_quantity <= 0:
+            raise HTTPException(status_code=400, detail=f"Product '{product.name}' is out of stock")
+        
+        if product.stock_quantity < item.quantity:
+            raise HTTPException(status_code=400, detail=f"Not enough stock for '{product.name}'. Only {product.stock_quantity} left.")
+            
+        # Update stock
+        product.stock_quantity -= item.quantity
+        if product.stock_quantity == 0:
+            product.in_stock = False
         
         # Calculate item price and add to total
         total_price += product.price * item.quantity

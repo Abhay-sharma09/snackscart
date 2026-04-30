@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
         <img src={imageSrc} alt={product.name} className="product-image" loading="lazy" />
         {/* Badge overlay */}
         <span className="product-category-badge">{product.category}</span>
-        {!product.in_stock && (
+        {(!product.in_stock || product.stock_quantity <= 0) && (
           <div className="out-of-stock-overlay">Out of Stock</div>
         )}
       </div>
@@ -26,15 +26,20 @@ const ProductCard = ({ product }) => {
         
         <div className="product-bottom-row">
           <span className="product-price">₹{product.price.toFixed(2)}</span>
-          <button 
-            className="icon-btn add-to-cart-btn" 
-            disabled={!product.in_stock}
-            aria-label="Add to cart"
-            title="Add to cart"
-            onClick={() => addToCart(product)}
-          >
+          <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+            {(product.stock_quantity > 0 && product.stock_quantity < 5) && (
+              <span style={{color: 'var(--accent-magenta)', fontSize: '0.8rem', fontWeight: '600'}}>Only {product.stock_quantity} left!</span>
+            )}
+            <button 
+              className="icon-btn add-to-cart-btn" 
+              disabled={!product.in_stock || product.stock_quantity <= 0}
+              aria-label="Add to cart"
+              title="Add to cart"
+              onClick={() => addToCart(product)}
+            >
             <ShoppingCart size={20} />
-          </button>
+            </button>
+          </div>
         </div>
       </div>
     </div>

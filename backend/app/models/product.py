@@ -10,4 +10,5 @@ class Product(Base):
     category = Column(String(100), index=True, nullable=False) # namkeen, sweets, traditional
     price = Column(Float, nullable=False)
     in_stock = Column(Boolean, default=True)
+    stock_quantity = Column(Integer, default=10)
     image_url = Column(String(500), nullable=True) # Optional for now
