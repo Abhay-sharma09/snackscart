@@ -97,6 +97,4 @@ http://localhost:5173
 
 
 
-# Author
 
-Developed as a Full Stack web application for online snack ordering and inventory management.
