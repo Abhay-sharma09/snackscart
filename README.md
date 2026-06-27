@@ -1,98 +1,55 @@
 # SnacksCart
 
-## About The Project
+## Overview
 
-SnacksCart is a Full Stack snack ordering web application built using FastAPI and React. The platform allows users to browse snacks, manage carts, place orders, and track order history through a modern and responsive interface.
+SnacksCart is a Full Stack snack ordering web application built with FastAPI and React. It enables users to browse products, manage shopping carts, place orders, and view order history through a modern and responsive interface. The platform also includes an admin dashboard for inventory and product management, secured with JWT-based authentication to ensure safe access to protected resources.
 
-The project also includes admin functionalities for inventory management, order handling, and product updates with secure JWT authentication.
+## Features
 
----
-
-# Features
-
-- User Signup and Login
-- JWT Authentication System
-- Product Browsing and Filtering
+- User Registration & Login
+- JWT Authentication
+- Product Browsing & Filtering
 - Shopping Cart Management
-- Order Placement and Tracking
+- Order Placement & History
 - Admin Dashboard
 - Inventory Management
-- Protected Routes and APIs
-- Responsive UI Design
-- SQLite Database Integration
+- Protected APIs & Routes
+- Responsive UI
 
----
+## Tech Stack
 
-# Tech Stack
+**Frontend:** React, Vite, JavaScript, React Router, CSS  
+**Backend:** Python, FastAPI, SQLAlchemy, SQLite, Uvicorn  
+**Authentication:** JWT, Passlib, Bcrypt
 
-## Frontend
-- React
-- Vite
-- JavaScript
-- React Router
-- CSS
-
-## Backend
-- Python
-- FastAPI
-- SQLAlchemy
-- SQLite
-- Uvicorn
-
-## Authentication
-- JWT Authentication
-- Passlib
-- Bcrypt
-
----
-
-# Installation
+## Installation & Run
 
 ```bash
-git clone <your-repository-link>
+git clone <repository-url>
 cd snackscart
-```
 
-## Backend Setup
-
-```bash
+# Backend
 cd backend
 python -m venv venv
 .\venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload
-```
 
-Backend runs at:
-
-```text
-http://localhost:8000
-```
-
----
-
-## Frontend Setup
-
-```bash
-cd frontend
+# Frontend
+cd ../frontend
 npm install
 npm run dev
 ```
 
-Frontend runs at:
+**Backend:** `http://localhost:8000`  
+**Frontend:** `http://localhost:5173`
 
-```text
-http://localhost:5173
-```
-
----
-
-# Future Improvements
+## Future Improvements
 
 - Razorpay Payment Integration
-- Better Mobile Responsiveness
 - User Profile Management
-- Deployment Support
+- Improved Mobile Responsiveness
+- Cloud Deployment
 - Automated Testing
 
 
