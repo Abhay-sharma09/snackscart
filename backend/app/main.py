@@ -10,8 +10,12 @@ from app.api.auth import router as auth_router
 from app.api.products import router as products_router
 from app.api.orders import router as orders_router
 
-# Create tables
-Base.metadata.create_all(bind=engine)
+# Create tables (wrapped in try-except so startup doesn't crash if DB is briefly unreachable)
+try:
+    Base.metadata.create_all(bind=engine)
+    print("Database tables created/verified successfully.")
+except Exception as e:
+    print(f"Warning: Could not create tables on startup: {e}")
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
