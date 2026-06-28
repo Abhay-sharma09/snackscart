@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 
 from app.db.database import engine
-from app.models import user # Make sure to import models to register them
+from app.models import user  # Make sure to import models to register them
 from app.db.database import Base
 
 from app.api.auth import router as auth_router
@@ -28,10 +28,15 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Build allowed origins list — always include the Vercel production frontend
+_allowed_origins = ["https://frontend-steel-one-22.vercel.app"]
+if settings.FRONTEND_URL and settings.FRONTEND_URL not in ("*", "https://frontend-steel-one-22.vercel.app"):
+    _allowed_origins.append(settings.FRONTEND_URL)
+
 # Set up CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL] if settings.FRONTEND_URL != "*" else ["*"],
+    allow_origins=_allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

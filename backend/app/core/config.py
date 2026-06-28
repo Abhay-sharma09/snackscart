@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     # Frontend origin for CORS — set FRONTEND_URL env var in production
-    FRONTEND_URL: str = "*"
+    FRONTEND_URL: str = "https://frontend-steel-one-22.vercel.app"
 
     class Config:
         env_file = ".env"
