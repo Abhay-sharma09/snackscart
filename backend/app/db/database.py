@@ -9,10 +9,10 @@ _db_url = settings.DATABASE_URL.split("?")[0] if "?" in settings.DATABASE_URL el
 if settings.DATABASE_URL.startswith("sqlite"):
     engine = create_engine(settings.DATABASE_URL, connect_args={"check_same_thread": False})
 elif "mysql" in settings.DATABASE_URL:
-    # Aiven MySQL requires SSL — pass via connect_args, not URL params
+    # Aiven MySQL: enable SSL via connect_args + add timeout so it never hangs
     engine = create_engine(
         _db_url,
-        connect_args={"ssl": {"check_hostname": False, "ssl_disabled": False}},
+        connect_args={"ssl": {}, "connect_timeout": 10},
     )
 else:
     engine = create_engine(settings.DATABASE_URL)

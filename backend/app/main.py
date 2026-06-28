@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
@@ -10,16 +11,21 @@ from app.api.auth import router as auth_router
 from app.api.products import router as products_router
 from app.api.orders import router as orders_router
 
-# Create tables (wrapped in try-except so startup doesn't crash if DB is briefly unreachable)
-try:
-    Base.metadata.create_all(bind=engine)
-    print("Database tables created/verified successfully.")
-except Exception as e:
-    print(f"Warning: Could not create tables on startup: {e}")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Runs AFTER uvicorn starts (so health check passes first)
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("Database tables created/verified successfully.")
+    except Exception as e:
+        print(f"Warning: Could not create tables on startup: {e}")
+    yield
+    # Shutdown logic (if any) goes here
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version="1.0.0",
+    lifespan=lifespan,
 )
 
 # Set up CORS
